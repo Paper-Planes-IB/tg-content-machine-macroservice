@@ -9,6 +9,16 @@ purpose: >
   and QA for Toshkent Gullari social content.
 
 inputs:
+  - collect_company_context
+  - collect_accounts_and_directions
+  - collect_audiences
+  - collect_products_and_offers
+  - collect_calendar
+  - collect_content_rules
+  - collect_references_and_examples
+  - collect_source_media
+  - collect_client_approvals
+  - collect_open_questions
   - google_sheet_content_plan
   - finance_signals
   - marketing_signals
@@ -23,6 +33,91 @@ outputs:
   - storyboard_tasks
   - qa_findings
   - human_review_questions
+  - folder_structure_map
+
+folder_structure:
+  root: TG_Content_Machine
+  layers:
+    - id: "01_Collect"
+      purpose: "Confirmed inputs for content planning."
+      children:
+        - "01_Company_Context"
+        - "02_Accounts_and_Directions"
+        - "03_Audiences"
+        - "04_Products_and_Offers"
+        - "05_Calendar"
+        - "06_Content_Rules"
+        - "07_References_and_Examples"
+        - "08_Source_Media"
+        - "09_Client_Approvals"
+        - "10_Open_Questions"
+    - id: "02_Signals"
+      purpose: "Finance, marketing, community, competitor, and dashboard signals."
+      children:
+        - "01_Finance"
+        - "02_Marketing"
+        - "03_Community"
+        - "04_Competitors"
+        - "05_Dashboard_Exports"
+        - "06_Signal_Archive"
+    - id: "03_Planning"
+      purpose: "Monthly frames, weekly plans, daily tasks, idea bank, and approved plan."
+      children:
+        - "01_Month_Frame"
+        - "02_Week_Plans"
+        - "03_Daily_Tasks"
+        - "04_Idea_Bank"
+        - "05_Approved_Plan"
+        - "06_Change_Log"
+    - id: "04_Production"
+      purpose: "Storyboards, shooting tasks, design, montage, subtitles, and covers."
+      children:
+        - "01_Storyboards"
+        - "02_Shooting_Tasks"
+        - "03_Design"
+        - "04_Montage"
+        - "05_Subtitles"
+        - "06_Covers"
+        - "07_Production_Questions"
+    - id: "05_Ready"
+      purpose: "Approved materials waiting for publication."
+      children:
+        - "01_By_Date"
+        - "02_By_Account"
+        - "03_By_Campaign"
+        - "04_Waiting_For_Publication"
+    - id: "06_Published"
+      purpose: "Published links, screenshots, texts, and reused content."
+      children:
+        - "01_Links"
+        - "02_Screenshots"
+        - "03_Post_Texts"
+        - "04_Reused_Content"
+    - id: "07_Analytics"
+      purpose: "Post results, weekly and monthly reviews, learnings, and test results."
+      children:
+        - "01_Post_Results"
+        - "02_Weekly_Review"
+        - "03_Monthly_Review"
+        - "04_Learnings"
+        - "05_Test_Results"
+    - id: "08_Methodology"
+      purpose: "Skills, prompts, QA checklists, content patterns, research base, and training."
+      children:
+        - "01_Skills"
+        - "02_Prompts"
+        - "03_QA_Checklists"
+        - "04_Content_Patterns"
+        - "05_Research_Base"
+        - "06_Training"
+    - id: "09_Admin"
+      purpose: "Access, roles, process, templates, and archive."
+      children:
+        - "01_Access"
+        - "02_Roles"
+        - "03_Process"
+        - "04_Templates"
+        - "05_Archive"
 
 skills:
   - tg-content-planner
@@ -41,6 +136,7 @@ guardrails:
 
 handoff:
   editor_start: docs/integration.md
+  collect_map: docs/collect-and-folder-structure.md
   pilot_example: examples/dahlias-pilot.md
   research_base: docs/research-base.md
   app_script_template: apps-script/Code.template.gs
