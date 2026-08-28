@@ -8,6 +8,41 @@ purpose: >
   Macroservice for signal-based content planning, human editing, storyboarding,
   and QA for Toshkent Gullari social content.
 
+google_sheet:
+  spreadsheet_id: "1IMIpMSn6VVX64HrmrIBO19xiF0yydKOVL2qaqVwe9UI"
+  editor_dashboard:
+    sheet_name: "00_Пульт редактора"
+    gid: 2001000018
+    role: "Daily editor cockpit."
+  required_sheets:
+    - "00_Пульт редактора"
+    - "08_План недели"
+    - "05_Сводный план"
+    - "04_Аудитории"
+    - "06_Правила контента"
+    - "07_Банк идей"
+    - "IG_*"
+  protected_statuses:
+    - "Согласовано"
+    - "В производстве"
+    - "Опубликовано"
+  safe_write_mode:
+    default: "read_and_recommend"
+    allow_automatic_updates_for:
+      - draft_future_rows
+      - signal_fields
+      - rationale_fields
+      - qa_status
+      - generated_document_links
+      - human_review_questions
+    require_human_confirmation_for:
+      - prices
+      - availability
+      - promotion_dates
+      - branch
+      - delivery_terms
+      - publication_status
+
 inputs:
   - collect_company_context
   - collect_accounts_and_directions
@@ -137,6 +172,7 @@ guardrails:
 handoff:
   editor_start: docs/integration.md
   collect_map: docs/collect-and-folder-structure.md
+  existing_sheet_binding: docs/existing-sheet-binding.md
   pilot_example: examples/dahlias-pilot.md
   research_base: docs/research-base.md
   app_script_template: apps-script/Code.template.gs
